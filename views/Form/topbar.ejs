@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="main.css">
+<nav class="topbar">
+    <ul class="list">
+        <li class="list"><a href="home.php?pagination=1">HOME</a></li>
+        <li class="list" style="cursor:pointer" onclick="document.getElementById('cam').style.display='block'">CAMERA</a></li>
+        <li class="list"><a href="portfolio.php">PORTFOLIO</a></li>
+        <li class="list" style="float:right;cursor:pointer" onclick="document.getElementById('out').style.display='block'">LOG OUT</a></li>
+        <li class="list" style="float:right;cursor:pointer;margin-right:10px;list-style-type: none;" onclick="document.getElementById('edit').style.display='block'">EDIT USER</a></li>
+    </ul>
+</nav>
+
+<div id="edit" class="logout">
+    <div class="animate undercam posCam" style="background-color:white;padding:10px;height:auto;">
+        <div style="position:relative;">
+            <span class="close" onclick="document.getElementById('edit').style.display='none'">&times;</span>
+            <form method="POST" action="Functions/update_user.php">
+            <h2>Edit User</h2>
+            <label class="log" for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="new_username_account">
+            <label class="log" for="email"><b>Email Adress</b></label>
+            <input type="email" placeholder="Enter Email Address" name="new_email_account">
+            <label class="log" for="pass"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="new_password_account">
+            <label class="log" for="comment"><b>Recieve notifications</b><label>
+            <select name="comment_option">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+                </select>
+            <br/>
+            <label class="log" for="username"><b>Username and Password to confirm</b></label>
+            <input type="text" placeholder="Enter Usesrname" name="username">
+            <input type="password" placeholder="Enter Password" name="pass">
+            <button type="submit">UPDATE</button>
+            <button type="submit" value="OK" name="submit_delete_account">Delete Account</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+<?php
+    include "Form/camera.php";
+?>
+
+<div class="logout" id="out">
+    <div class="out-content animate">
+        <h2>Would You Like To Logut?</h2>
+        <div class="out-cancel">
+        <a href="Functions/logout.php" style="padding:0"><div class="button">
+                <h3>Logout</h3>
+            </div></a>
+            <div class="button" onclick="document.getElementById('out').style.display='none'">
+                <h3>Cancel</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var modal = document.getElementById('out');
+var cam = document.getElementById('cam');
+var edit = document.getElementById('edit');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    if (event.target == cam) {
+        cam.style.display = "none";
+    }
+    if (event.target == edit) {
+        modal.style.display = "none";
+    }
+}
+</script>

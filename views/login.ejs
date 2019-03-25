@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <% include Form/header.ejs %>
+      <div class="offset">
+          <div class="logo">
+              <h1>Welcome to Camagru</h1>
+              <% if(error !== "none"){ %>
+                <div><%= error %></div>
+              <% } %>
+              <!-- <?php if(isset($_GET['signup'])) {
+                  $check = $_GET['signup'];
+                  if ($check == 'pass') {
+                      echo '<div>Passwords do not match</div>';
+                  }
+                  else if ($check == 'name') {
+                      echo '<div>Name is way too short</div>';
+                  }
+                  else if ($check == 'weak') {
+                      echo '<div>Password is too weak or does not contain digits/special characters</div>';
+                  }
+              }?> -->
+          </div>
+          <div class="logHold">
+              <div class="group">
+                      <h2>Login</h2>
+                      <form method="POST" action="login">
+                      <label class="log" for="user"><b>Username</b></label>
+                      <input type="text" placeholder="Enter Password" name="username" required>
+                      <label class="log" for="passwd"><b>Password</b></label>
+                      <input type="password" placeholder="Enter Password" name="con_pass" required>
+                      <button type="submit" name="login">Login</button>
+                  </form>
+              <a href="Functions/forgot_pass.php">Forgot password</a>
+              <br/>
+              <a href="gallery.php">Gallery</a>
+              </div>
+              <div class="group">
+              <form method="POST" action="sign_up">
+                  <h2>Sign Up</h2>
+                  <label class="log" for="username"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" name="username" required>
+                  <label class="log" for="email"><b>Email Adress</b></label>
+                  <input type="email" placeholder="Enter Email Address" name="email" required>
+                  <label class="log" for="password1"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="password1" required>
+                  <label class="log" for="password2"><b>Re-enter Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="password2" required>
+                  <button type="submit">Sign Up</button>
+              </form>
+              </div>
+          </div>
+      </div>
+  </body>
+</html>

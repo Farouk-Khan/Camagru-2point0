@@ -1,0 +1,57 @@
+<?php
+    <!-- session_start();
+    if ($_SESSION['username'] == "" ||empty($_SESSION)) {
+    echo '<script>alert("Please login or create an account first!!!!");window.location.href="index.php";</script>';
+    } -->
+
+    <% include Form/header.ejs %>
+    <% include Form/topbar.ejs %>
+    <!-- echo '<h1 style="color:white;">Welcome '.$_SESSION["username"].'</h5>'; -->
+<!-- <?php
+    include "Functions/get_image.php";
+    $pag = $_GET['pagination'];
+    $images = get_images();
+    foreach($images as $i => $value) {
+        if (($i >= ($pag * 5 - 5 ) && $i < ($pag *5))|| $pag == 0){
+            echo '<div>';
+            echo '<h4 style="color:white;">'.$value['username'].'</h4>';
+            echo '<img src="'.$value['picture'].'">';
+            echo '<div>';
+            echo '<form action="Functions/delete_image.php" method="POST">
+                    <input type=hidden name="pag" value="'.$pag.'">
+                    <input type=hidden name="true_username" value="'.$value['username'].'">
+                    <button type = "submit" name="delete_butt" value = "'.$value['pic_id'].'"/><img class="like" src="images/delete.png" width="20" height="20"></button>
+                    </form>';
+            echo '<form action="Functions/likes.php" method="POST">
+                    <input type=hidden name="pag" value="'.$pag.'">
+                    <button type = "submit" name="like_but" value = "'.$value['pic_id'].'"/><img class="like" src="images/like.png" width="20" height="20">';echo $value['likes']; echo '</button>
+                    </form>';
+            echo '<form action="Functions/comments.php" method="POST" target="'.$value['pic_id'].'">
+                    <input type=hidden name="image" value="'.$value['pic_id'].'">
+                    <input type=hidden name="username_image" value="'.$value['username'].'">
+                    <button type ="submit" name="comment_but" value = "OK"/><img class="like" src="images/comment.png" width="20" height="20"></button>
+                    </form>
+                    <iframe name="'.$value['pic_id'].'" width="90%" height="200px">Comments not working</iframe>';
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+?> -->
+
+<form action="home.php" method="POST" id="page">
+<label style="color:white;" for="pagenation">Page</label>
+<div id="pagination">
+<a style="color:white;" href="home.php?pagination=1">1</a>
+<a style="color:white;" href="home.php?pagination=2">2</a>
+<a style="color:white;" href="home.php?pagination=3">3</a>
+<a style="color:white;" href="home.php?pagination=4">4</a>
+<a style="color:white;" href="home.php?pagination=5">5</a>
+<a style="color:white;" href="home.php?pagination=0">infinte</a>
+</div>
+<script>
+    document.getElementById('pagination').addEventListener("change", function() {
+            document.getElementById('page').submit();
+            document.getElementById('pagination').selectedIndex = "2";
+    }, false);
+</script>
+    <% include Form/footer.ejs %>
